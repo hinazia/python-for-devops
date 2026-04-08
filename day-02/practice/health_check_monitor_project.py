@@ -1,4 +1,5 @@
 import requests
+import json
 
 file = open("report.txt", "w")
 
@@ -9,12 +10,14 @@ websites_list = [
     "https://example.invalid"
 ]
 
+results = []
+
 up_count = 0
 down_count = 0
 
 def handle_down(url, down_count):
     down_count += 1
-    print(f"Status{url} : DOWN, response time in seconds : {response.elapsed.total_seconds()}")
+    print(f"Status {url} : DOWN, response time in seconds : {response.elapsed.total_seconds()}")
     if down_count == 3:
             print(f"Alert : {url} is down three times now")
     return down_count
@@ -22,20 +25,22 @@ def handle_down(url, down_count):
 for url in websites_list:
     try:
         response = requests.get(url = url)
-         
         print(f"Checking : {url}")
         if response.status_code == 200:
             print(f"Status : UP, response time in seconds : {response.elapsed.total_seconds()}\n") #elapsed object is used to measure the response time
-            up_count += 1   
+            up_count += 1  
+            results.append({"url" : url, "Status" : "Up" }) 
             file.write(f"{url} is UP \n")         
         else:
            count = handle_down(url, down_count)
+           results.append({"url" : url, "Status" : "Down"})
 
     except (requests.exceptions.ConnectionError, 
     requests.exceptions.Timeout, 
     requests.exceptions.RequestException) as e:
         #print(f"error : {e}")
         count = handle_down(url, down_count)
+        results.append({"url" : url, "Status" : "Down"})
     
 print("Summary : ")
 file.write("Summary : ")
@@ -45,6 +50,9 @@ print(f"{count} websites are Down")
 file.write(f"{count} websites are down\n")
 
 file.close()
+
+with open("report.json", "w") as file:
+    json.dump(results, file, indent=4)
 
 
 
