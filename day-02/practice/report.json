@@ -1,0 +1,18 @@
+[
+    {
+        "url": "https://google.com",
+        "Status": "Up"
+    },
+    {
+        "url": "https://github.com",
+        "Status": "Up"
+    },
+    {
+        "url": "https://stackoverflow.com",
+        "Status": "Up"
+    },
+    {
+        "url": "https://example.invalid",
+        "Status": "Down"
+    }
+]
