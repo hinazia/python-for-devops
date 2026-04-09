@@ -1,3 +1,1 @@
-Summary : Total INFO Count = 10
-Total ERROR Count = 3
-Total WARNING Count = 2
+{'INFO': 10, 'ERROR': 3, 'WARNING': 2}
