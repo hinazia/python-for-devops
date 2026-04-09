@@ -1,0 +1,3 @@
+Summary : Total INFO Count = 10
+Total ERROR Count = 3
+Total WARNING Count = 2
