@@ -1,0 +1,14 @@
+[
+    {
+        "log": "INFO",
+        "Count": 10
+    },
+    {
+        "log": "ERROR",
+        "Count": 3
+    },
+    {
+        "log": "WARNING",
+        "Count": 2
+    }
+]
