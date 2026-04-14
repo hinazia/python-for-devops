@@ -1,0 +1,41 @@
+import boto3
+import pdb
+
+class AWSUtilsFile:
+
+    def __init__(self):
+        self.s3_client = self.get_service("s3")
+        self.ec2_client = self.get_service("ec2")
+
+    def get_service(self, service):
+        return boto3.client(service)
+
+
+    def show_buckets(self):
+        response = self.s3_client.list_buckets()["Buckets"]
+        for bucket in response:
+            print(bucket["Name"])
+
+    def create_bucket(self, bucket_name):
+        try:
+            response = self.s3_client.create_bucket(
+                Bucket=bucket_name,
+                CreateBucketConfiguration={
+                'LocationConstraint': 'eu-central-1',
+            },
+            )
+            if response["ResponseMetadata"]["HTTPStatusCode"] == 200:
+                print("Bucket created Successfully")
+            else:
+                print("Bucket not created Successfully")
+
+        except:
+            print("Error occured")
+
+if __name__ == "__main__":
+    aws = AWSUtilsFile()
+    aws.create_bucket("hina1234-bucket")
+
+
+
+
