@@ -23,3 +23,9 @@
 
     - run main.py
             py main.py
+
+## API Endpoints
+
+    -  /aws/s3 ---> To craete and lists buckets
+    -  /aws/ec2 ---> Shows all EC2 regions 
+    -  /metrics ----> CPU metrics
