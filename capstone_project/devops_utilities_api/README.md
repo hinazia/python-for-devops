@@ -1,11 +1,24 @@
 # Internal DevOps Utilities API
 
 ## Aim
-
-    Internal AWS API surface for common DevOps utilities, intended for internal teams:
+ Internal AWS API surface for common DevOps utilities, intended for internal teams:
 
     - AWS Resources API
     - Metrics API
+
+## Features
+    - Fetch S3 buckets using boto3
+    - List EC2 regions
+    - FastAPI endpoints for interaction
+
+## Run Locally
+uvicorn main:app --reload
+
+## API Endpoints
+
+    -  /aws/s3 ---> To craete and lists buckets
+    -  /aws/ec2 ---> Shows all EC2 regions 
+    -  /metrics ----> CPU metrics
 
 ## Usage
 
@@ -24,8 +37,4 @@
     - run main.py
             py main.py
 
-## API Endpoints
 
-    -  /aws/s3 ---> To craete and lists buckets
-    -  /aws/ec2 ---> Shows all EC2 regions 
-    -  /metrics ----> CPU metrics
