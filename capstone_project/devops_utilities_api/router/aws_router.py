@@ -2,11 +2,12 @@ from fastapi import APIRouter
 from service.aws_service import AWSUtilsFile
 
 router = APIRouter()
-aws = AWSUtilsFile()
 
 @router.get("/s3")
 def get_s3_buckets():
     try:
+        # Initialize AWS service only when endpoint is called
+        aws = AWSUtilsFile()
         aws.create_bucket("hina-098765-bucket")
         list_bucket = aws.show_buckets()
         return list_bucket
@@ -17,6 +18,8 @@ def get_s3_buckets():
 
 @router.get("/ec2")
 def get_region():
+    # Initialize AWS service only when endpoint is called
+    aws = AWSUtilsFile()
     return aws.show_regions() #will not work because user is not given permission in aws
 
 # def create_bucket():

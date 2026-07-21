@@ -38,6 +38,6 @@ class AWSUtilsFile:
         except:
             print("Error occured")
 
-    def show_regions(self):
-        response = self.ec2_client.describe_regions()
-        return response
+        def show_regions(self):
+            response = self.ec2_client.describe_regions()
+            return response
